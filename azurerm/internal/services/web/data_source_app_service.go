@@ -56,7 +56,10 @@ func dataSourceArmAppService() *schema.Resource {
 				Type:     schema.TypeBool,
 				Computed: true,
 			},
-
+			"client_cert_mode": {
+				Type:     schema.TypeString,
+				Computed: true,
+			},
 			"app_settings": {
 				Type:     schema.TypeMap,
 				Computed: true,
@@ -204,6 +207,7 @@ func dataSourceArmAppServiceRead(d *schema.ResourceData, meta interface{}) error
 		d.Set("enabled", props.Enabled)
 		d.Set("https_only", props.HTTPSOnly)
 		d.Set("client_cert_enabled", props.ClientCertEnabled)
+		d.Set("client_cert_mode", props.ClientCertMode)
 		d.Set("default_site_hostname", props.DefaultHostName)
 		d.Set("outbound_ip_addresses", props.OutboundIPAddresses)
 		d.Set("possible_outbound_ip_addresses", props.PossibleOutboundIPAddresses)
